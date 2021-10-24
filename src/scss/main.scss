@@ -1,7 +1,508 @@
 // Alpha_shop/src/main.scss
-$bg_color : #b3d9ff;
-$font_color : black;
-body{
-  background-color:$bg_color;
-  color: $font_color;
+/* reset css */
+body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.btn,
+button,
+button:focus,
+input:focus,
+textarea:focus,
+select,
+select:focus,
+a:focus {
+  outline: 0px !important;
+}
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+button[disabled] {
+  pointer-events: none;
+}
+input {
+  padding: 0;
+}
+input:required {
+  box-shadow: none;
+}
+input:invalid {
+  box-shadow: none;
+}
+// 
+/* basic setting */
+$body-bg: #f8f7fc;
+$body-color: #18253d;
+$white: #fff;
+$main-blue: #001935;
+$secondary-blue: #3c88fd;
+$freedom-blue: #02b8ff;
+$dark-gray: #4a4a4a;
+$light-gray: #a7aaaf;
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+);
+// 
+/* 使用@each 產出css size設定 */
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: (
+  $spacer * 0.25
+  ),
+  2: (
+  $spacer * 0.5
+  ),
+  3: (
+  $spacer * 0.75
+  ),
+  4: $spacer,
+  5: (
+  $spacer * 1.25
+  ),
+  6: (
+  $spacer * 1.5
+  ),
+  7: (
+  $spacer * 1.75
+  ),
+  8: (
+  $spacer * 2
+  )
+);
+/* 使用@each 產出css spacer設定 */
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+}
+  // 
+html {
+  font-size: 16px;
+  height: 100%;
+}
+body {
+  height: 100%;
+  background: $body-bg;
+  color: $body-color;
+}
+.d-none {
+  display: none;
+}
+.d-inline {
+  display: inline;
+}
+.d-inline-block {
+  display: inline-block;
+}
+.d-block {
+  display: block;
+}
+.d-flex {
+  display: flex;
+}
+// 
+.flex-column {
+  flex-direction: column;
+}
+.justify-content-start {
+  justify-content: flex-start;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-around {
+  justify-content: space-around;
+}
+.align-content-start {
+  align-content: flex-start;
+}
+.align-content-end {
+  align-content: flex-end;
+}
+.align-content-center {
+  align-content: center;
+}
+.align-items-start {
+  align-items: flex-start;
+}
+.align-items-end {
+  align-items: flex-end;
+}
+.align-items-center {
+  align-items: center;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+// 
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+);
+@each $prop, $abbrev in (width: w, height: h) {
+ @each $num, $val in $sizes {
+   .#{$abbrev}-#{$num} {
+     #{$prop}: $val;
+   }
+ }
+}
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25
+  ),
+  2: (
+    $spacer * 0.5
+  ),
+  3: (
+    $spacer * 0.75
+  ),
+  4: $spacer,
+  5: (
+    $spacer * 1.25
+  ),
+  6: (
+    $spacer * 1.5
+  ),
+  7: (
+    $spacer * 1.75
+  ),
+  8: (
+    $spacer * 2
+  )
+);
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $num, $val in $spacers {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $val;
+    }
+    .#{$abbrev}t-#{$num} {
+      #{$prop}-top: $val;
+    }
+    .#{$abbrev}r-#{$num} {
+      #{$prop}-right: $val;
+    }
+    .#{$abbrev}b-#{$num} {
+      #{$prop}-bottom: $val;
+    }
+    .#{$abbrev}l-#{$num} {
+      #{$prop}-left: $val;
+    }
+    .#{$abbrev}x-#{$num} {
+      #{$prop}-left: $val;
+      #{$prop}-right: $val;
+    }
+    .#{$abbrev}y-#{$num} {
+      #{$prop}-top: $val;
+      #{$prop}-bottom: $val;
+    }
+  }
+}
+// color setting
+
+/* basic setting */
+$white: #fff;
+$main-blue: #001935;
+$secondary-blue: #3c88fd;
+$freedom-blue: #02b8ff;
+$dark-gray: #4a4a4a;
+$light-gray: #a7aaaf;
+
+:root {
+  --body-bg: #FFFFFF;
+  --footer-bg: #F6F7F8;
+  --footer-color:#7D7E86;
+  --next-btn: #F67599;
+  --body-color: #2A2A2A;
+  --divider: #E6E6EB;
+  --form-title: #808080;
+  --cart-bg: #FFFFFF;
+  --cart-btn: #F0F0F5;
+  --input-bder:#4A4A4A;
+  --input-color:#999999;
+  --input-label:#808080;
+  --selected-step:#2A2A2A;
+  --unselected-step:#AFB1BD;
+
+  }
+
+// extend
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+}
+
+%margin-center{
+  width: 80%;
+  margin: 0 auto;
+}
+
+@mixin input{
+  height: 40px;
+  border: 1px solid var(--input-bder);
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 0.5rem;
+  background-color: var(--body-bg);
+  color: var(--body-color);
+  &:hover , &:active{
+    border-color: var(--selected-step);
+  }
+}
+%input-style{
+  @include input;
+}
+
+
+%position-center{
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+%grid-layout{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat ( 12 , 1fr );
+}
+
+
+
+
+
+
+// 
+nav{
+  position: fixed;
+  z-index: 999;
+  top:0;
+  height: 56px;
+  width: 100%;
+  margin: 0 auto;
+  @extend %standard-boxshadow;
+  .container{
+    height: 100%;
+    background-color: var(--body-bg);
+  }
+  .navbar{
+    position: absolute;
+    top:100%;
+    width: 90%;
+    height: 394px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6 , 1fr);
+    transform: scale(1 , 0);
+    transform-origin: top;
+    transition: transform .3s ease-in;
+    color: var(--body-color);
+    background-color: var(--body-bg);
+
+    .nav__menu{
+      grid-area: span 5 / 1 / 6 / 2;
+      display: grid;
+      grid-template-rows: repeat ( 5 , 1fr);
+      justify-items: center;
+      align-items: center;
+      opacity:0;
+      .nav__menu_content{
+        position: relative;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+
+        &:after{
+          content: '';
+          position: absolute;
+          top:calc(100% + 24px);
+          left: 0.5rem;
+          right: 0.5rem;
+          border-bottom: 1px solid rgba(42, 42, 42, 0.1);
+
+        }
+      }
+    }
+    .nav__icons{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity:0;
+      .nav__icon{
+        height: 21px;
+        width: 21px;
+        margin-right: 10px;
+      }
+      :nth-child(2){
+        background-size: cover;
+      }
+      :nth-last-child(2){
+        background-size: cover;
+        margin: 0 50px;
+      }
+      :nth-child(4){
+        background-size: cover;
+      }
+    }
+  }
+  .nav__logo{
+    position: absolute;
+    width: 135.85px;
+    height: 24px;
+    background-size: cover;
+    @extend %position-center;
+    
+  } 
+}
+
+
+
+
+
+
+
+#main-content {
+  margin-left: 60px;
+  display: flex;
+  .left-content {
+  flex: 1;
+}
+}
+
+
+
+// stepper
+
+@mixin getStepNums($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .circle-container::after {
+      content: "#{$i}";
+    }
+  }
+}
+
+.stepper-panel {
+ height: 120px;
+ .stepper-container {
+   width: 80%;
+   margin: 0 auto;
+   display: flex;
+ }
+}
+.step {
+  flex: 1;
+  text-align: center;
+  @include getStepNums(3);
+ .circle-container {
+   height: 24px;
+   width: 24px;
+   background-color: $light-gray;
+   border-radius: 50%;
+   color: $dark-gray;
+   margin: 0 auto;
+ }
+ .label-container {
+   margin-top: 10px;
+   color: $light-gray;
+   padding-top: 40px;
+}
+ 
+ &.checked, &.active {
+  .circle-container {
+    background-color: $freedom-blue;
+    color: $body-color;
+  }
+}
+ &.checked .circle-container::after {
+  content: "\2714";
+}
+ &.checked, &.active {
+  .circle-container {
+    background-color: $freedom-blue;
+    color: $body-color;
+  }
+  .label-container {
+    color: $body-color;
+  }
+}
+}
+
+
+
+
+
+
+
+
+// button
+.btn {
+  font-size: 16px;
+  border-radius: 5px;
+  height: 32px;
+  padding: 0 16px;
+  box-shadow: 1px 1px 5px #a6a6a6;
+  &.btn-primary {
+    color: $white;
+    background-color: $secondary-blue;
+  }
+  &.btn-outline {
+    color: $dark-gray;
+  }
+  &:hover {
+    box-shadow: 1px 1px 5px $dark-gray;
+  }
+  &[disabled] {
+    opacity: 0.5;
+  }
 }
